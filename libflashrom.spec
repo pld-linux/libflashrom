@@ -20,6 +20,7 @@ Group:		Libraries
 # branch https://github.com/fwupd/flashrom/commits/wip/hughsie/fwupd
 Source0:	https://github.com/fwupd/flashrom/archive/%{gitref}/flashrom-%{snap}.tar.gz
 # Source0-md5:	f54475af56c26dd584f804aad4ed708f
+Patch0:		meson_undefined_var.patch
 URL:		https://github.com/fwupd/flashrom
 %{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	gcc >= 5:3.2
@@ -67,6 +68,7 @@ Dokumentacja API biblioteki libflashrom.
 
 %prep
 %setup -q -n flashrom-%{gitref}
+%patch0 -p0
 
 %build
 %meson build \

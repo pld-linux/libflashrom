@@ -1,7 +1,11 @@
 #
 # Conditional build:
 %bcond_without	apidocs	# API documentation
-#
+
+%ifarch %{ix86} %{x8664} x32
+%define		with_pci_io	1
+%endif
+
 Summary:	Flash ROM programming library
 Summary(pl.UTF-8):	Biblioteka do programowania pamięci Flash ROM
 Name:		libflashrom
@@ -65,7 +69,13 @@ Dokumentacja API biblioteki libflashrom.
 %setup -q -n flashrom-%{gitref}
 
 %build
-%meson build
+%meson build \
+%if %{without pci_io}
+	-Dconfig_nic3com=false \
+	-Dconfig_nicrealtek=false \
+	-Dconfig_rayer_spi=false \
+	-Dconfig_satamv=false
+%endif
 
 %ninja_build -C build
 

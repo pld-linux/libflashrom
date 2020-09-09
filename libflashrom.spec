@@ -71,6 +71,7 @@ Dokumentacja API biblioteki libflashrom.
 %patch0 -p0
 
 %build
+export CFLAGS="%{rpmcflags} -fcommon"
 %meson build \
 %if %{without pci_io}
 	-Dconfig_nic3com=false \

@@ -56,9 +56,7 @@ Pliki nagłówkowe biblioteki libflashrom.
 Summary:	API documentation for libflashrom library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libflashrom
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libflashrom library.
